@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_ejercicio_recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_ejercicio_card_height"
+    android:layout_margin="5dp"
+    android:scrollbars="vertical"
+    android:scrollbarStyle="outsideOverlay"
+    card_view:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:id="@+id/item_product_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_ejercicio_card_height">
+
+        <ImageView
+            android:id="@+id/item_product_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_ejercicio_image"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerInside"
+            android:src="@drawable/pesaxxxhdpi"/>
+
+        <TextView
+            android:id="@+id/item_ejercicio_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/item_product_image"
+            android:layout_gravity="bottom"
+            android:background="@color/colorGrayLight"
+            android:gravity="center"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:id="@+id/card_home_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_product_image"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:contentDescription="@string/app_name"
+                android:id="@+id/item_product_thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                android:src="@drawable/hombrepesas">
+
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.8"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/item_product_store"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGray"/>
+
+                <TextView
+                    android:id="@+id/item_product_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGray"/>
+
+                <TextView
+                    android:id="@+id/item_product_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/item_product_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_home_info"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="Ver Detalles"
+            android:textColor="@color/colorBlueLight"/>
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

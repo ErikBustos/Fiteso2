@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@color/colorWhite"
+tools:context=".FragmentConfiguracion">
+
+
+<TextView
+    android:id="@+id/fragment_configuracion_textview_nombre"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/nombre" />
+
+<EditText
+    android:id="@+id/fragment_configuracion_nombre"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="@string/nombre"
+    android:inputType="textPersonName"
+    android:text="@string/erik_bustos" />
+
+<TextView
+    android:id="@+id/fragment_configuracion_textview_edad"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/edad" />
+
+<EditText
+    android:id="@+id/fragment_configuracion_edad"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="@string/edad"
+    android:inputType="textPersonName"
+    android:text="@string/erik_bustos_edad" />
+
+<TextView
+    android:id="@+id/fragment_configuracion_textview_deporte"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/deporte" />
+
+<Spinner
+    android:id="@+id/fragment_configuracion_spinner_deportes"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:entries="@array/deportesenIteso" />
+
+<Button
+    android:id="@+id/fragment_configuracion_guardar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:text="@string/guardar"/>
+</LinearLayout>

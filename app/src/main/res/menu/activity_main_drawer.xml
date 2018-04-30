@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+tools:showIn="navigation_view">
+
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_perfil"
+        android:title="@string/perfil" />
+    <item
+        android:id="@+id/nav_rutina"
+        android:title="@string/rutina" />
+    <item
+        android:id="@+id/nav_crear_rutina"
+        android:title="@string/crear_rutina" />
+    <item
+        android:id="@+id/nav_explorar"
+        android:title="@string/explorar" />
+</group>
+
+<item  android:title="">
+    <menu>
+        <item
+            android:id="@+id/nav_configuracion"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/configuracion" />
+        <item
+            android:id="@+id/nav_cerrar_sesion"
+            android:title="@string/cerrar_sesion" />
+    </menu>
+</item>
+
+</menu>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="circlePrimary">#ec54c7f1</color>
+    <color name="circlePrimaryDark">#cd1269ff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#fffefe</color>
+    <color name="colorLoginBackground"> #5499c7</color>
+    <color name="colorpink">#ffd9d9</color>
+    <color name="colorGray">#878686</color>
+    <color name="colorGrayLight">#e4e4e4</color>
+    <color name="colorBlueLight">#03A9F4</color>
+    <item name="text_grey" type="color">#8f8f8f</item>
+</resources>

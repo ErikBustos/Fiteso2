@@ -1,0 +1,19 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <!-- Activity Splash -->
+    <dimen name="activity_splash_size">30sp</dimen>
+    <dimen name="activity_splash_margin">20dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+
+    <!-- Item Ejercicio-->
+    <dimen name="item_ejercicio_card_height">320dp</dimen>
+    <dimen name="item_ejercicio_image">180dp</dimen>
+    <dimen name="ejerciciorow_general_padding">16dp</dimen>
+    <dimen name="ejerciciorow_row_padding">8dp</dimen>
+</resources>

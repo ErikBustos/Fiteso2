@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "425029432107",
+    "firebase_url": "https://fiteso2-ee20d.firebaseio.com",
+    "project_id": "fiteso2-ee20d",
+    "storage_bucket": "fiteso2-ee20d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425029432107:android:51af34b95bf34a14",
+        "android_client_info": {
+          "package_name": "com.erikbustosm.fiteso2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425029432107-bkbcaca25qjoo1qh55huissr6sl61mtf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.erikbustosm.fiteso2",
+            "certificate_hash": "163205835d28da7dda65f7f56e90e1cff12ff115"
+          }
+        },
+        {
+          "client_id": "425029432107-suma7sib4s8v82bub6c3ehkp2hjune8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ6I73aNHM1g-kn8O3sQwXmNIUmfhnmIw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425029432107-suma7sib4s8v82bub6c3ehkp2hjune8o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
