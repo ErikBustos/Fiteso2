@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -18,6 +19,9 @@ import com.erikbustosm.fiteso2.FragmentExplorarRutinas;
 import com.erikbustosm.fiteso2.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FragmentExplorar extends Fragment {
@@ -51,17 +55,29 @@ public class FragmentExplorar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_explorar, container, false);
-        tabLayout = view.findViewById(R.id.activity_explorar_tabs);
+
         firebaseDatabase= FirebaseDatabase.getInstance().getReference();
-        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+
         viewPager = view.findViewById(R.id.viewpager);
-        viewPager.setAdapter(mSectionsPagerAdapter);
+        setupViewPager(viewPager);
+
+        tabLayout = view.findViewById(R.id.activity_explorar_tabs);
+
         tabLayout.setupWithViewPager(viewPager);
 
         return view;
     }
 
+    private void setupViewPager(ViewPager viewPager){
+        SectionsPagerAdapter sectionsPagerAdapter= new SectionsPagerAdapter(getChildFragmentManager());
+        sectionsPagerAdapter.addFragment(new FragmentExplorarRutinas(),"Rutinas");
+        sectionsPagerAdapter.addFragment(new FragmentExplorarEjercicios(), "Ejercicios");
+        viewPager.setAdapter(sectionsPagerAdapter);
+    }
+
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
         SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -100,6 +116,11 @@ public class FragmentExplorar extends Fragment {
                     return "Ejercicios";
             }
             return null;
+        }
+
+        public void addFragment(Fragment fragment, String title){
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
         }
     }
 
