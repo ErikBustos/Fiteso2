@@ -1,12 +1,12 @@
-package com.erikbustosm.fiteso2.Tools;
+package com.erikbustosm.fiteso2;
 
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,9 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.erikbustosm.fiteso2.FragmentExplorarEjercicios;
-import com.erikbustosm.fiteso2.FragmentExplorarRutinas;
-import com.erikbustosm.fiteso2.R;
+import com.erikbustosm.fiteso2.Tools.Constants;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -52,13 +50,18 @@ public class FragmentExplorar extends Fragment {
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_explorar, container, false);
 
         firebaseDatabase= FirebaseDatabase.getInstance().getReference();
 
-        viewPager = view.findViewById(R.id.viewpager);
+        viewPager = view.findViewById(R.id.viewpager_explorar);
         setupViewPager(viewPager);
 
         tabLayout = view.findViewById(R.id.activity_explorar_tabs);
@@ -88,14 +91,16 @@ public class FragmentExplorar extends Fragment {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
-                case Constants.FRAGMENT_EXPLORAR_RUTINA:
+                case Constants.FRAGMENT_EXPLORAR_RUTINA: {
                     if (fragmentExplorarRutinas == null)
                         fragmentExplorarRutinas = new FragmentExplorarRutinas();
                     return fragmentExplorarRutinas;
-                case Constants.FRAGMENT_EXPLORAR_EJERCICIOS:
+                }
+                case Constants.FRAGMENT_EXPLORAR_EJERCICIOS: {
                     if (fragmentExplorarEjercicios == null)
                         fragmentExplorarEjercicios = new FragmentExplorarEjercicios();
                     return fragmentExplorarEjercicios;
+                }
 
                 default:
                     return new FragmentExplorarRutinas();

@@ -3,7 +3,7 @@ package com.erikbustosm.fiteso2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 
-public class FragmentExplorarRutinas extends Fragment {
+public class FragmentExplorarRutinas extends android.support.v4.app.Fragment {
 
     RecyclerView recyclerView;
     ArrayList<RutinaSemanal> rutinaSemanalArrayList;
@@ -47,6 +47,7 @@ public class FragmentExplorarRutinas extends Fragment {
 
         return rootView;
     }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

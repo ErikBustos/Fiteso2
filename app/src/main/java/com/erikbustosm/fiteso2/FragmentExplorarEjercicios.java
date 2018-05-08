@@ -2,21 +2,32 @@ package com.erikbustosm.fiteso2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.erikbustosm.fiteso2.Beans.Ejercicio;
+import com.erikbustosm.fiteso2.FragmentExpEjercicios.AdapterEjercicios;
 import com.erikbustosm.fiteso2.Tools.Constants;
 import com.erikbustosm.fiteso2.Beans.Ejercicio;
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -27,104 +38,52 @@ import java.util.Iterator;
  */
 public class FragmentExplorarEjercicios extends Fragment {
 
-    RecyclerView recyclerView;
-    ArrayList<Ejercicio> ejercicioArrayList;
-    AdapterEjercicioRow adapterEjercicioRow;
-
+    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView ejerciciosList;
 
     public FragmentExplorarEjercicios() {
+    }
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
+
+        View view= inflater.inflate(R.layout.fragment_explorar_ejercicios,container,false);
+        ejerciciosList=view.findViewById(R.id.fragment_explorar_recyclerview);
+        setHasOptionsMenu(true);
+
+        ejerciciosList.setHasFixedSize(true);
+        layoutManager= new LinearLayoutManager(getContext());
+        ejerciciosList.setLayoutManager(layoutManager);
+
+        return view;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView= inflater.inflate(R.layout.fragment_explorar_rutinas,container,false);
-        recyclerView= rootView.findViewById(R.id.fragment_recycler);
-        return rootView;
-    }
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onStart() {
+        super.onStart();
+        Query ejerciciosDatabase= FirebaseDatabase.getInstance().getReference().child("Ejercicio").orderByChild("categoria");
 
-        recyclerView.setHasFixedSize(true);
-        // Use a linear layout manager
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-
-        ejercicioArrayList= new ArrayList<>();
-       // ejercicioArrayList.add(new Ejercicio("id1","hola","no se","Pecho","f"));
-       // ejercicioArrayList.add(new Ejercicio("id2","hoadda","nasfo se","Pefcho","f"));
-        ejercicioArrayList=getEjercicios();
-
-        adapterEjercicioRow= new AdapterEjercicioRow(Constants.FRAGMENT_EXPLORAR_EJERCICIOS,getActivity(),ejercicioArrayList);
-        recyclerView.setAdapter(adapterEjercicioRow);
-
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Ejercicio ejercicio= data.getParcelableExtra(Constants.EXTRA_Ejercicio);
-        Iterator<Ejercicio> iterator= ejercicioArrayList.iterator();
-        int position=0;
-        while(iterator.hasNext()){
-            Ejercicio ejercicio1= iterator.next();
-            if(ejercicio1.getId().equals(ejercicio.getId())){
-                ejercicioArrayList.set(position,ejercicio);
-                break;
-            }
-            position++;
-        }
-        adapterEjercicioRow.notifyDataSetChanged();
-
-    }
-
-
-
-    public ArrayList<Ejercicio> getEjercicios(){
-
-
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference ejercicioref= databaseReference.child("Ejercicio");
-
-        final ArrayList<Ejercicio> ejercicioArrayList= new ArrayList<>();
-
-
-        ejercicioref.addValueEventListener(new ValueEventListener() {
+        ejerciciosDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Ejercicio> ejercicios= new ArrayList<>();
+                for( DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+                    Ejercicio ejercicio=dataSnapshot1.getValue(Ejercicio.class);
+                    ejercicio.setId(ejercicio.getId());
+                    ejercicios.add(ejercicio);
 
-
-                for(DataSnapshot childDataSnapshot: dataSnapshot.getChildren()){
-                    Ejercicio e= childDataSnapshot.getValue(Ejercicio.class);
-                    ejercicioArrayList.add(e);
 
                 }
+                AdapterEjercicios adapterEjercicios= new AdapterEjercicios(ejercicios,getFragmentManager());
+                ejerciciosList.setAdapter(adapterEjercicios);
 
-
-               // String categoria = dataSnapshot.child("categoria").getValue(String.class);
-                //String descripcion = dataSnapshot.child("descripcion").getValue(String.class);
-                //String id=  dataSnapshot.child("id").getValue(String.class);
-                //String nombre=  dataSnapshot.child("nombre").getValue(String.class);
-                //String photoURL=  dataSnapshot.child("photoURL").getValue(String.class);
-
-                //Ejercicio ejercicio= new Ejercicio(id,nombre,descripcion,categoria,photoURL);
-                //ejercicioArrayList.add(ejercicio);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.w("EjerciciosList", "load:onCancelled", databaseError.toException());
             }
         });
-
-
-
-        return ejercicioArrayList ;
     }
-
-
 }

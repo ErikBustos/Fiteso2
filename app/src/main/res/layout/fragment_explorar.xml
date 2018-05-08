@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tools.FragmentExplorar">
-    <android.support.design.widget.CoordinatorLayout
+    tools:context=".FragmentExplorar">
+    <android.support.constraint.ConstraintLayout
 
         xmlns:app="http://schemas.android.com/apk/res-auto"
 
@@ -32,12 +32,12 @@
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
+            android:id="@+id/viewpager_explorar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    </android.support.design.widget.CoordinatorLayout>
+    </android.support.constraint.ConstraintLayout>
 
 
 </FrameLayout>
