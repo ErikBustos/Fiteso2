@@ -2,6 +2,7 @@ package com.erikbustosm.fiteso2;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 
 import com.erikbustosm.fiteso2.Beans.DetallesEjercicio;
 import com.erikbustosm.fiteso2.Beans.Ejercicio;
+import com.erikbustosm.fiteso2.Beans.Rutina;
 import com.erikbustosm.fiteso2.Beans.RutinaDia;
 import com.erikbustosm.fiteso2.Beans.RutinaSemanal;
 import com.erikbustosm.fiteso2.Tools.Constants;
@@ -59,7 +61,7 @@ public class ActivityMain extends AppCompatActivity
 
 
 
-        //rutinabien();
+       // rutinabien2();
         drawerTitle= "Profile";
         loadprofilefragment(drawerTitle);
     }
@@ -171,14 +173,14 @@ public class ActivityMain extends AppCompatActivity
 
     }
     public void rutinaejemplo(){
-
+ /*
         List<DetallesEjercicio> detallesEjercicios= new LinkedList<>();
     Ejercicio ejercicios[]=new Ejercicio[4];
 
     String idDetalleEjercicio1= firebaseDatabase.child("DetallesEjercicio").push().getKey();
     String idEjercicio1= firebaseDatabase.child("Ejercicio").push().getKey();
 
-        detallesEjercicios.add(new DetallesEjercicio(idEjercicio1,15,3,50));
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio1,idEjercicio1,15,3,50));
     ejercicios[0]= new Ejercicio(idEjercicio1,"Sentadilla","La sentadilla o squat es un movimiento que se inicia de pie, mirando al frente y con la espalda recta, mientras los pies se separan del ancho de los hombros.\n" +
             "La barra utilizada debe situarse justo encima de los trapecios, no debe apoyarse en el cuello.\n" +
             "Siempre mirando al frente y sin curvar la espalda, debemos descender los glúteos flexionando la rodilla y la cadera,  y cuidando que la rodilla no pase de la punta del pie ni sobrepase los 90 grados de flexión. Descendemos hasta que los muslos quedan paralelos al suelo y desde allí debemos elevarnos lentamente mientras exhalamos el aire inhalado al comenzar el descenso del cuerpo.\n" +
@@ -188,7 +190,7 @@ public class ActivityMain extends AppCompatActivity
     String idDetalleEjercicio2= firebaseDatabase.child("DetallesEjercicio").push().getKey();
     String idEjercicio2= firebaseDatabase.child("Ejercicio").push().getKey();
 
-        detallesEjercicios.add(new DetallesEjercicio(idEjercicio2,10,4,60));
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio2,idEjercicio2,10,4,60));
     ejercicios[1]= new Ejercicio(idEjercicio2,"Lagartija","Las lagartijas te permiten fortalecer los hombros (deltoides), pectorales y los músculos serratos que son los que están a los costados del pecho, debajo de los brazos." +
             "  Se realizan boca abajo, apoyando las palmas de las manos separadas a una distancia entre sí similar al ancho de los hombros. Manteniendo la espalda recta y los pies juntos, " +
             "debes bajar todo el cuerpo valièndote de la fuerza de tus brazos.", Constants.PECHO,
@@ -197,7 +199,7 @@ public class ActivityMain extends AppCompatActivity
     String idDetalleEjercicio3= firebaseDatabase.child("DetallesEjercicio").push().getKey();
     String idEjercicio3= firebaseDatabase.child("Ejercicio").push().getKey();
 
-        detallesEjercicios.add(new DetallesEjercicio(idEjercicio3,8,4,45));
+        detallesEjercicios.add(new DetallesEjercicio(idEjercicio3,idEjercicio3,8,4,45));
     ejercicios[2]= new Ejercicio(idEjercicio3,"Curl Biceps con Barra", "Para comenzar el movimiento debemos comenzar de pie, con la espalda recta, las rodillas ligeramente flexionadas y los pies separados del ancho de los hombros.\n" +
             "\n" +
             "Tomaremos una barra lisa con las manos, de manera que las palmas miren hacia arriba, es decir, con agarre en supinación. Las manos deben estar separadas en la barra un poco más allá de la anchura de los hombros.\n" +
@@ -208,7 +210,7 @@ public class ActivityMain extends AppCompatActivity
 
     String idDetalleEjercicio4= firebaseDatabase.child("DetallesEjercicio").push().getKey();
     String idEjercicio4= firebaseDatabase.child("Ejercicio").push().getKey();
-        detallesEjercicios.add(new DetallesEjercicio(idEjercicio4,10,5, 60));
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio4,idEjercicio4,10,5, 60));
     ejercicios[3]= new Ejercicio(idEjercicio4,"Elevaciones Laterales","Para comenzar el ejercicio debemos colocarnos de pie, con las piernas ligeramente flexionadas y separadas del ancho de la cadera. La espalda debe permanecer recta y en cada mano debemos sujetar una mancuerna, mientras los brazos permanecen a los lados del cuerpo o delante de los muslos, levemente flexionados.\n" +
             "\n" +
             "Tomando aire elevamos las mancuernas hasta que los brazos queden alineados con los hombros y desde allí bajamos lentamente mientras exhalamos",Constants.HOMBRO,"https://uploads-cdn.thgblogs.com/wp-content/uploads/sites/450/2016/03/09031139/elevaciones-laterales-hombros.jpg");
@@ -305,7 +307,7 @@ public class ActivityMain extends AppCompatActivity
             firebaseDatabase.child("Ejercicio").child(ejerciciosdia2[i].getId()).setValue(ejerciciosdia2[i]);
         firebaseDatabase.child("RutinaSemanal").child(rutinaSemanal.getId()).setValue(rutinaSemanal);
 
-
+  */
 
     }
 
@@ -316,96 +318,85 @@ public class ActivityMain extends AppCompatActivity
 
         String idDetalleEjercicio1= firebaseDatabase.child("DetallesEjercicio").push().getKey();
         //sentadilla
-        detallesEjercicios.add(new DetallesEjercicio("-LBJHuIBZOuIW_4VJuee",15,3,50));
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio1,"-LBJHuIBZOuIW_4VJuee",15,3,50));
 
         String idDetalleEjercicio2= firebaseDatabase.child("DetallesEjercicio").push().getKey();
         //lagartija
-        detallesEjercicios.add(new DetallesEjercicio("-LBJHuIGtREekxQWdPk0",10,4,60));
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio2,"-LBJHuIGtREekxQWdPk0",10,4,60));
 
         String idDetalleEjercicio3= firebaseDatabase.child("DetallesEjercicio").push().getKey();
         //curl bicep
-        detallesEjercicios.add(new DetallesEjercicio("-LBJHuIHI8okTrNFRWRe",8,4,45));
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio3,"-LBJHuIHI8okTrNFRWRe",8,4,45));
 
         String idDetalleEjercicio4= firebaseDatabase.child("DetallesEjercicio").push().getKey();
         //elevaciones laterales
-        detallesEjercicios.add(new DetallesEjercicio("-LBJHuIHI8okTrNFRWRg",10,5, 60));
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio4,"-LBJHuIHI8okTrNFRWRg",10,5, 60));
 
 
-        String idrutinaDía1= firebaseDatabase.child("RutinaDia").push().getKey();
-        Log.e("tag",idrutinaDía1);
+        String idDetalles= firebaseDatabase.child("Detalles").push().getKey();
 
 
-        List<String> dia1= new LinkedList<>();
-        dia1.add(Constants.LUNES);
-        dia1.add(Constants.MARTES);
 
-        String idrutinaDia1= firebaseDatabase.child("RutinaDia").push().getKey(); // este borrarlo después
-        RutinaDia rutinaDia1=new RutinaDia(idrutinaDía1, dia1 , detallesEjercicios);
-        String detallesEjercicio=firebaseDatabase.child("detallesEjercicio").push().getKey();
         for(int i=0;i<detallesEjercicios.size();i++) {
+            String detallesEjercicio=firebaseDatabase.child("detallesEjercicio").push().getKey();
             firebaseDatabase.child("detallesEjercicio").child(detallesEjercicio).setValue(detallesEjercicios.get(i));
-
+            firebaseDatabase.child("Detalles").child(idDetalles).child(Integer.toString(i)).setValue(detallesEjercicio);
         }
-        firebaseDatabase.child("rutinaDia").child(idrutinaDia1).setValue(idDetalleEjercicio1);
 
-
-
-
-        /*
-
-
-                List<DetallesEjercicio> detallesEjerciciosdia2 =new LinkedList<>();
-        Ejercicio ejerciciosdia2[]=new Ejercicio[4];
-
-        String idDetalleEjerciciodia2_1= firebaseDatabase.child("DetallesEjercicio").push().getKey();
-
-        detallesEjerciciosdia2.add(new DetallesEjercicio("-LAskpX0CZcP77MSe7Ew",15,3,50));
-
-            String idDetalleEjerciciodia2_2= firebaseDatabase.child("DetallesEjercicio").push().getKey();
-
-        //elevaciones gemelos
-        detallesEjerciciosdia2.add(new DetallesEjercicio("-LAskpXAMO4oO-oop9NY",15,3,50));
-
-        String idDetalleEjerciciodia2_3= firebaseDatabase.child("DetallesEjercicio").push().getKey();
-
-        //dominadas
-        detallesEjerciciosdia2.add(new DetallesEjercicio("-LAskpXAMO4oO-oop9N_",8,4,40));
-
-
-
-
-        //press militar
-        detallesEjerciciosdia2.add(new DetallesEjercicio("-LAskpXBBVQwj6iieUOo",8,3,70));
-
-
-
-        String idrutinaDía2= firebaseDatabase.child("RutinaDia").push().getKey();
-        List<String> dias2= new LinkedList<>();
-        dias2.add(Constants.MARTES);
-        dias2.add(Constants.VIERNES);
-
-
-        RutinaDia rutinaDia2=new RutinaDia(idrutinaDía2, dias2 ,detallesEjerciciosdia2);
-
-        List<RutinaDia> rutinasdia=new LinkedList<>();
-        rutinasdia.add(rutinaDia1);
-        rutinasdia.add(rutinaDia2);
-
-        String idRutinaSemanal=  firebaseDatabase.child("RutinaSemanal").push().getKey();
-        RutinaSemanal rutinaSemanal=new RutinaSemanal(idRutinaSemanal,"Rutina de volumen de activación","Las rutinas para ganar masa muscular y volumen no se tienen porque limitar a entrenar en el gimnasio. Si dispones del equipo adecuado puedes realizar una rutina completa y aumentar tu masa muscular sin salir de tu propia casa, en tu ambiente, con tu música, etc.\n" +
+        String idrutina= firebaseDatabase.child("Rutinas").push().getKey();
+        Rutina rutina= new Rutina(idrutina,"Rutina de volumen de activación","Musculación","Las rutinas para ganar masa muscular y volumen no se tienen porque limitar a entrenar en el gimnasio. Si dispones del equipo adecuado puedes realizar una rutina completa y aumentar tu masa muscular sin salir de tu propia casa, en tu ambiente, con tu música, etc.\n" +
                 "\n" +
                 "Este es un entrenamiento intenso, pocas series y un peso medio-alto con objetivo para fuerza-hipertrofia. El objetivo es intentar subir en fuerza poco a poco con una cantidad moderada de entrenamiento y que el aumento de fuerza nos traiga también el de nuestro volumen muscular."
-                ,Constants.PUBLICA,rutinasdia,"https://www.cambiatufisico.com/wp-content/uploads/entrenamiento-volumen-casa-900x506.jpg");
+                ,Constants.PUBLICA,"https://www.cambiatufisico.com/wp-content/uploads/entrenamiento-volumen-casa-900x506.jpg");
+
+        firebaseDatabase.child("Rutinas").child(idrutina).setValue(rutina);
+        firebaseDatabase.child("Rutinas").child(idrutina).child("idDetalles").setValue(idDetalles);
+
+
+    }
+
+    public void rutinabien2(){
+
+        List<DetallesEjercicio> detallesEjercicios= new LinkedList<>();
+        Ejercicio ejercicios[]=new Ejercicio[4];
+
+        String idDetalleEjercicio1= firebaseDatabase.child("DetallesEjercicio").push().getKey();
+        //sentadilla
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio1,"-LBJHuIBZOuIW_4VJuee",15,3,50));
+
+        String idDetalleEjercicio2= firebaseDatabase.child("DetallesEjercicio").push().getKey();
+        //lagartija
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio2,"-LBJHuIGtREekxQWdPk0",10,4,60));
+
+        String idDetalleEjercicio3= firebaseDatabase.child("DetallesEjercicio").push().getKey();
+        //curl bicep
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio3,"-LBJHuIHI8okTrNFRWRe",8,4,45));
+
+        String idDetalleEjercicio4= firebaseDatabase.child("DetallesEjercicio").push().getKey();
+        //elevaciones laterales
+        detallesEjercicios.add(new DetallesEjercicio(idDetalleEjercicio4,"-LBJHuIHI8okTrNFRWRg",10,5, 60));
+
+
+        String idDetalles= firebaseDatabase.child("Detalles").push().getKey();
 
 
 
-        for(int i=0;i<ejercicios.length;i++)
-            firebaseDatabase.child("Ejercicio").child(ejercicios[i].getId()).setValue(ejercicios[i]);
-        for(int i=0;i<ejerciciosdia2.length;i++)
-            firebaseDatabase.child("Ejercicio").child(ejerciciosdia2[i].getId()).setValue(ejerciciosdia2[i]);
-        firebaseDatabase.child("RutinaSemanal").child(rutinaSemanal.getId()).setValue(rutinaSemanal);
-        */
 
 
+        String idrutina= firebaseDatabase.child("Rutinas").push().getKey();
+        Rutina rutina= new Rutina(idrutina,"Rutina de volumen de activación","Musculación","Las rutinas para ganar masa muscular y volumen no se tienen porque limitar a entrenar en el gimnasio. Si dispones del equipo adecuado puedes realizar una rutina completa y aumentar tu masa muscular sin salir de tu propia casa, en tu ambiente, con tu música, etc.\n" +
+                "\n" +
+                "Este es un entrenamiento intenso, pocas series y un peso medio-alto con objetivo para fuerza-hipertrofia. El objetivo es intentar subir en fuerza poco a poco con una cantidad moderada de entrenamiento y que el aumento de fuerza nos traiga también el de nuestro volumen muscular."
+                ,Constants.PUBLICA,"https://www.cambiatufisico.com/wp-content/uploads/entrenamiento-volumen-casa-900x506.jpg");
+
+        firebaseDatabase.child("Rutinas").child(idrutina).setValue(rutina);
+        firebaseDatabase.child("Rutinas").child(idrutina).child("idDetalles").setValue(idDetalles);
+
+
+        for(int i=0;i<detallesEjercicios.size();i++) {
+            String detallesEjercicio=firebaseDatabase.child("Rutina").child(idrutina).child("detallesEjercicio").push().getKey();
+            firebaseDatabase.child("Rutinas").child(idrutina).child("detallesEjercicio").child(detallesEjercicios.get(i).getIdDetallesEjercicio()).setValue(detallesEjercicios.get(i));
+            //firebaseDatabase.child("Detalles").child(idDetalles).child(Integer.toString(i)).setValue(detallesEjercicio);
+        }
     }
 }

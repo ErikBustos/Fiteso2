@@ -4,16 +4,29 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class DetallesEjercicio implements Parcelable {
+    private String idDetallesEjercicio;
     private String idEjercicio;
     private int reps;
     private int sets;
     private int descansoSeg;
 
-    public DetallesEjercicio(String idEjercicio, int reps, int sets, int descansoSeg) {
+    public DetallesEjercicio(String idDetallesEjercicio, String idEjercicio, int reps, int sets, int descansoSeg) {
+        this.idDetallesEjercicio = idDetallesEjercicio;
         this.idEjercicio = idEjercicio;
         this.reps = reps;
         this.sets = sets;
         this.descansoSeg = descansoSeg;
+    }
+
+    public DetallesEjercicio() {
+    }
+
+    public String getIdDetallesEjercicio() {
+        return idDetallesEjercicio;
+    }
+
+    public void setIdDetallesEjercicio(String idDetallesEjercicio) {
+        this.idDetallesEjercicio = idDetallesEjercicio;
     }
 
     public String getIdEjercicio() {
@@ -56,6 +69,7 @@ public class DetallesEjercicio implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.idDetallesEjercicio);
         dest.writeString(this.idEjercicio);
         dest.writeInt(this.reps);
         dest.writeInt(this.sets);
@@ -63,6 +77,7 @@ public class DetallesEjercicio implements Parcelable {
     }
 
     protected DetallesEjercicio(Parcel in) {
+        this.idDetallesEjercicio = in.readString();
         this.idEjercicio = in.readString();
         this.reps = in.readInt();
         this.sets = in.readInt();

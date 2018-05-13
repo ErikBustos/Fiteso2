@@ -9,14 +9,16 @@ import android.os.Parcelable;
 
 public class Rutina implements Parcelable {
     private String id;
+    private String idDetalles;
     private String nombre;
     private String categoria;
     private String descripcion;
-    private boolean publico;
+    private String publico;
     private Ejercicio[] ejercicios;
     private DetallesEjercicio[] detallesEjercicios;
+    private String imageURL;
 
-    public Rutina(String id, String nombre, String categoria, String descripcion, boolean publico, Ejercicio[] ejercicios, DetallesEjercicio[] detallesEjercicios) {
+    public Rutina(String id, String nombre, String categoria, String descripcion, String publico, String imageURL, Ejercicio[] ejercicios, DetallesEjercicio[] detallesEjercicios) {
         this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -24,6 +26,27 @@ public class Rutina implements Parcelable {
         this.publico = publico;
         this.ejercicios = ejercicios;
         this.detallesEjercicios = detallesEjercicios;
+        this.imageURL= imageURL;
+    }
+
+    public String getIdDetalles() {
+        return idDetalles;
+    }
+
+    public void setIdDetalles(String idDetalles) {
+        this.idDetalles = idDetalles;
+    }
+
+    public Rutina(String id, String nombre, String categoria, String descripcion, String publico, String imageURL) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+        this.publico = publico;
+        this.imageURL = imageURL;
+    }
+
+    public Rutina() {
     }
 
     public String getId() {
@@ -46,6 +69,14 @@ public class Rutina implements Parcelable {
         return categoria;
     }
 
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
@@ -58,11 +89,11 @@ public class Rutina implements Parcelable {
         this.descripcion = descripcion;
     }
 
-    public boolean isPublico() {
+    public String getPublico() {
         return publico;
     }
 
-    public void setPublico(boolean publico) {
+    public void setPublico(String publico) {
         this.publico = publico;
     }
 
@@ -91,22 +122,26 @@ public class Rutina implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
+        dest.writeString(this.idDetalles);
         dest.writeString(this.nombre);
         dest.writeString(this.categoria);
         dest.writeString(this.descripcion);
-        dest.writeByte(this.publico ? (byte) 1 : (byte) 0);
+        dest.writeString(this.publico);
         dest.writeTypedArray(this.ejercicios, flags);
         dest.writeTypedArray(this.detallesEjercicios, flags);
+        dest.writeString(this.imageURL);
     }
 
     protected Rutina(Parcel in) {
         this.id = in.readString();
+        this.idDetalles = in.readString();
         this.nombre = in.readString();
         this.categoria = in.readString();
         this.descripcion = in.readString();
-        this.publico = in.readByte() != 0;
+        this.publico = in.readString();
         this.ejercicios = in.createTypedArray(Ejercicio.CREATOR);
         this.detallesEjercicios = in.createTypedArray(DetallesEjercicio.CREATOR);
+        this.imageURL = in.readString();
     }
 
     public static final Creator<Rutina> CREATOR = new Creator<Rutina>() {
