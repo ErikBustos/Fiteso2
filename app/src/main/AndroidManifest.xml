@@ -32,7 +32,7 @@
         <activity android:name=".ActivityRegisterProfilepic" />
         <activity android:name=".ActivityRegisterSeleccionDeporte" />
         <activity android:name=".ActivityDetalleRutina" />
-        <activity android:name=".ActivityExpEjercicio"></activity>
+        <activity android:name=".ActivityRutina"></activity>
     </application>
 
 </manifest>

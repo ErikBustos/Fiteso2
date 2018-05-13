@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.erikbustosm.fiteso2.AdapterEjerciciosRutina.AdapterEjerciciosRutina;
 import com.erikbustosm.fiteso2.Beans.DetallesEjercicio;
 import com.erikbustosm.fiteso2.Beans.Ejercicio;
 import com.erikbustosm.fiteso2.Beans.Rutina;
@@ -41,7 +42,7 @@ public class ActivityDetalleRutina extends AppCompatActivity {
 
     ImageView image;
     TextView title,categoria;
-    Button show;
+
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class ActivityDetalleRutina extends AppCompatActivity {
         image= findViewById(R.id.activity_detalle_rutina_imageview);
         title=findViewById(R.id.activity_detalle_rutina_title);
         categoria= findViewById(R.id.activity_detalle_rutina_categoria);
-        show=findViewById(R.id.activity_detalle_rutina_show);
+
         recyclerView=findViewById(R.id.activity_detalle_rutina_recyclerview);
 
         rutina= getIntent().getExtras().getParcelable("rutina");
@@ -75,7 +76,7 @@ public class ActivityDetalleRutina extends AppCompatActivity {
 
 
         Button but= findViewById(R.id.activity_detalle_rutina_bt);
-        Button but2= findViewById(R.id.activity_detalle_rutina_bt2);
+
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,27 +92,13 @@ public class ActivityDetalleRutina extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                AdapterDetallesEjercicio adapterEjercicios= new AdapterDetallesEjercicio(ejerciciosArrayList, getSupportFragmentManager());
+                AdapterEjerciciosRutina adapterEjercicios= new AdapterEjerciciosRutina(ejerciciosArrayList, getSupportFragmentManager());
                 recyclerView.setAdapter(adapterEjercicios);
 
             }
         });
 
-        but2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                for(Ejercicio eje: ejerciciosArrayList)
-                Log.e("Ejercicios",eje.getNombre());
-            }
-        });
 
-        show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AdapterEjercicios adapterEjercicios= new AdapterEjercicios(ejerciciosArrayList, getSupportFragmentManager());
-                recyclerView.setAdapter(adapterEjercicios);
-            }
-        });
 
 
     }

@@ -41,7 +41,7 @@ public class AdapterEjercicios extends RecyclerView.Adapter<AdapterEjercicios.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.name.setText(ejercicioArrayList.get(position).getNombre());
         holder.categoria.setText(ejercicioArrayList.get(position).getCategoria());
         final String id= ejercicioArrayList.get(position).getId();
@@ -53,6 +53,7 @@ public class AdapterEjercicios extends RecyclerView.Adapter<AdapterEjercicios.Vi
                 android.support.v4.app.Fragment detalle= new FragmentDetallesEjercicio();
                 Bundle args= new Bundle();
                 args.putString("id", id);
+                args.putParcelable("ejercicio",ejercicioArrayList.get(position));
                 detalle.setArguments(args);
                 android.support.v4.app.FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_ejercicios_relative_layout,detalle);

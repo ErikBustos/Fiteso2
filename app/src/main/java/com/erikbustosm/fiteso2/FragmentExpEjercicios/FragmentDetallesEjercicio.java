@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.erikbustosm.fiteso2.Beans.Ejercicio;
 import com.erikbustosm.fiteso2.FragmentExplorarEjercicios;
 import com.erikbustosm.fiteso2.R;
 import com.google.firebase.database.ChildEventListener;
@@ -39,6 +40,7 @@ public class FragmentDetallesEjercicio extends android.support.v4.app.Fragment {
     String name,decripcion,categoria;
     String urlPic;
     ImageView ejercicioPic;
+    Ejercicio ejercicio;
 
     public FragmentDetallesEjercicio() {
 
@@ -51,6 +53,7 @@ public class FragmentDetallesEjercicio extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_detalles_ejercicio, container, false);
 
         id = getArguments().getString("id");
+        ejercicio=getArguments().getParcelable("ejercicio");
 
 
 
@@ -75,12 +78,20 @@ public class FragmentDetallesEjercicio extends android.support.v4.app.Fragment {
             }
         });
 
+        nombre.setText(ejercicio.getNombre());
+        decripcionText.setText(ejercicio.getDescripcion());
+        categoriaText.setText(ejercicio.getCategoria());
+        new DownloadImageTask((ImageView) ejercicioPic)
+                .execute(ejercicio.getPhotoURL());
+
+
         return view;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         id = getArguments().getString("id");
         databaseReference= FirebaseDatabase.getInstance().getReference().child("Ejercicio").child(id);
 
@@ -98,7 +109,9 @@ public class FragmentDetallesEjercicio extends android.support.v4.app.Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        }); */
+
+
 
 
 
@@ -108,7 +121,7 @@ public class FragmentDetallesEjercicio extends android.support.v4.app.Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
+     /*
         nombre.setText(name);
         decripcionText.setText(decripcion);
         categoriaText.setText(categoria);
@@ -116,7 +129,7 @@ public class FragmentDetallesEjercicio extends android.support.v4.app.Fragment {
         new DownloadImageTask((ImageView) ejercicioPic)
                 .execute(urlPic);
 
-
+        */
     }
 
 

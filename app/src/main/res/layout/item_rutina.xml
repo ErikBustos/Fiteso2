@@ -94,17 +94,7 @@
 
 
 
-        <Button
-            android:id="@+id/item_rutina_agregarrutina"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/item_rutina_info"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="Agregar rutina"
-            android:textSize="13dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColor="@color/colorBlueLight"/>
+
 
         <Button
             android:id="@+id/item_rutina_verdescripcion"
@@ -113,9 +103,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_rutina_info"
-            android:layout_toEndOf="@id/item_rutina_agregarrutina"
+
             android:background="?android:attr/selectableItemBackground"
-            android:text="ver decripción"
+            android:text="Hacer rutina"
             android:textSize="13dp"
             android:textColor="@color/colorBlueLight"/>
 
